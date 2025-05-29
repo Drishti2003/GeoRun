@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GeoRun" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">#2C2C2E</item> <!-- Dark shade -->
+        <item name="colorPrimaryVariant">#1E1E1E</item> <!-- Slightly darker -->
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#2C2C2E</item>
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+
+        <!-- Customize Action Bar text -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+
+        <!-- Remove elevation if you want a flat look -->
+        <item name="actionBarStyle">@style/FlatActionBar</item>
+    </style>
+
+    <style name="FlatActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="background">?attr/colorPrimary</item>
+        <item name="elevation">0dp</item>
+        <item name="titleTextStyle">@style/ActionBarTitle</item>
+        <item name="displayOptions">showHome|useLogo|showTitle</item> <!-- show logo + title -->
+        <item name="logo">@mipmap/ic_logo</item> <!-- your logo file -->
+    </style>
+
+
+    <!-- Optional: Title text style -->
+    <style name="ActionBarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- Customize your light theme here. -->
+    <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <style name="Theme.GeoRun" parent="Base.Theme.GeoRun" />
+</resources>
