@@ -1,6 +1,7 @@
 package com.example.georun;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -24,6 +25,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
+
+    public interface OnMapLongClickListener {
+        void onMapLongClicked(LatLng latLng);
+    }
+    private OnMapLongClickListener longClickListener;
+
+    public void setOnMapLongClickListener(OnMapLongClickListener listener) {
+        this.longClickListener = listener;
+    }
 
     private GoogleMap map;
     private FusedLocationProviderClient fusedLocationClient;
@@ -80,8 +90,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             // Show the bottom sheet
             bottomSheet.show(getActivity().getSupportFragmentManager(), "ModalBottomSheet");
 
-            MarkerOptions markerOptions = new MarkerOptions().position(latLng);
-            map.addMarker(markerOptions);
+            if (longClickListener != null) {
+                longClickListener.onMapLongClicked(latLng);
+            }
+
         });
     }
 
@@ -96,6 +108,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             if (map != null) {
                 onMapReady(map); // Reinitialize with permission
             }
+        }
+    }
+    public void addMarkerAt(LatLng latLng) {
+        if (map != null && latLng != null) {
+            map.addMarker(new MarkerOptions().position(latLng)).setTitle("Workout Location");
         }
     }
 }

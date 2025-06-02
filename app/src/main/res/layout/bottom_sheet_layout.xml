@@ -35,6 +35,16 @@
                 android:textSize="18sp"
                 android:layout_margin="10dp"
                 android:padding="5dp"/>
+        <Spinner
+            android:id="@+id/workout_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#b0b0b0"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:textColor="#000"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
