@@ -2,6 +2,7 @@ package com.example.georun;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +11,39 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
+    ImageView closeButton;
+
+    @Override
+    public int getTheme() {
+        return R.style.CustomBottomSheetDialogTheme;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        FrameLayout bottomSheet = getDialog().findViewById(
+                com.google.android.material.R.id.design_bottom_sheet
+        );
+
+        if (bottomSheet != null) {
+            BottomSheetBehavior<FrameLayout> behavior = BottomSheetBehavior.from(bottomSheet);
+            behavior.setShouldRemoveExpandedCorners(false); // 🔑 Keeps corners when expanded
+        }
+    }
+
 
     public interface BottomSheetListener {
         void onDataEntered(String workoutType, String distance, String duration, String cadence);
@@ -51,6 +76,14 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         etDistance = view.findViewById(R.id.distance);
         etDuration = view.findViewById(R.id.duration);
         etCadence = view.findViewById(R.id.cadence);
+        closeButton = view.findViewById(R.id.btnClose);
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),

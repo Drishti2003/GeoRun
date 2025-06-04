@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#1E1E1E">
+    android:orientation="vertical">
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="#1e1e1e"-->
+<!--        android:padding="20dp">-->
 
     <LinearLayout
         android:id="@+id/formCard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/rounded_background"
         android:padding="20dp"
         android:elevation="4dp"
         app:layout_constraintWidth_percent="0.85"
@@ -22,10 +24,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_close"
+            android:contentDescription="Close"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -35,33 +49,39 @@
                 android:textSize="18sp"
                 android:layout_margin="10dp"
                 android:padding="5dp"/>
+
         <Spinner
             android:id="@+id/workout_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#b0b0b0"
-            android:layout_weight="1"
-            android:textSize="18sp"
             android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="#b0b0b0"
+            android:fontFamily="@font/montserrat_semibold"
             android:padding="5dp"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            android:textSize="18sp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:padding="5dp"
                 android:text="Duration"
                 android:textColor="#fff"
-                android:textStyle="bold"
                 android:textSize="18sp"
-                android:layout_margin="10dp"
-                android:padding="5dp"/>
+                android:textStyle="bold" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_weight="1"
                 android:hint="min"
                 android:background="#B0B0B0"
@@ -78,6 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_weight="1"
                 android:text="Distance"
                 android:textColor="#fff"
@@ -89,6 +110,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
                 android:background="#B0B0B0"
@@ -105,6 +127,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_weight="1"
                 android:text="Cadence"
                 android:textColor="#fff"
@@ -115,6 +138,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_weight="1"
                 android:hint="step/min"
                 android:background="#B0B0B0"
@@ -134,15 +158,18 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
                 android:text="Done"
-                android:background="#1D9A6C"
+                android:background="@drawable/rounded_background"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:padding="5dp"
-                android:layout_margin="12dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="22dp"
                 android:id="@+id/btnDone"/>
         </LinearLayout>
 
     </LinearLayout>
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
