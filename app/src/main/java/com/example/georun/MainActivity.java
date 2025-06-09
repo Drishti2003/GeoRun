@@ -1,5 +1,7 @@
 package com.example.georun;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +31,11 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+//        WorkoutDbHelper dbHelper = new WorkoutDbHelper(this);
+//        dbHelper.deleteAllWorkouts();
+//
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -84,23 +91,46 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onMapLongClicked(LatLng latLng) {
         selectedLatLng = latLng;
+        BottomSheetDialog bottomSheet = new BottomSheetDialog();
+        bottomSheet.setSelectedLatLng(latLng);
+        bottomSheet.show(getSupportFragmentManager(), "ModalBottomSheet");
+
     }
 
     @Override
-    public void onDataEntered(String workoutType, String distance, String duration, String cadence) {
+    public void onDataEntered(String workoutType, float distance, int duration, int cadence) {
         if (selectedLatLng == null) {
-            Toast.makeText(this, "Location not selected!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Location not selected!", LENGTH_SHORT).show();
             return;
         }
 
-        if (distance.isEmpty() || duration.isEmpty() || cadence.isEmpty()) {
-            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+        if (workoutType == null || workoutType.trim().isEmpty()
+                || distance <= 0 || duration <= 0 || cadence <= 0) {
+            Toast.makeText(this, "Please fill all fields", LENGTH_SHORT).show();
             return;
         }
 
-        mapsFragment.addMarkerAt(selectedLatLng);
+        workoutModel workout = new workoutModel(workoutType, duration, distance, cadence);
+        workout.setLat(selectedLatLng.latitude);
+        workout.setLng(selectedLatLng.longitude);
 
-        Log.d("DataReceived", workoutType + ", " + distance + ", " + duration + ", " + cadence);
+        WorkoutDbHelper dbHelper = new WorkoutDbHelper(this);
+        try {
+            dbHelper.insertWorkout(workout);
+            if (mapsFragment != null) {
+                mapsFragment.addMarkerAt(selectedLatLng,workout);
+            }
+        } catch (Exception e) {
+            Log.e("MainActivity", "Error saving workout", e);
+            Toast.makeText(this, "Failed: " + e.getMessage(), LENGTH_SHORT).show();
+        }
+
+        listFragment fragment = (listFragment) getSupportFragmentManager()
+                .findFragmentByTag("android:switcher:" + R.id.ViewPager + ":1");
+        if (fragment != null) {
+            fragment.refreshWorkoutList();
+        }
     }
+
 
 }

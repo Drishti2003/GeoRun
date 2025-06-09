@@ -5,9 +5,14 @@
         <item name="colorPrimaryVariant">#1E1E1E</item> <!-- Slightly darker -->
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:statusBarColor">#2C2C2E</item>
+        <item name="colorControlActivated">#000000</item> <!-- Cursor & underline -->
+        <item name="colorControlNormal">#B0B0B0</item>   <!-- Inactive underline -->
+        <item name="colorAccent">#000000</item>         <!-- Hint animation -->
+        <item name="android:textColorHint">#666666</item>
+        <item name="textInputStyle">@style/CustomTextInputStyle</item> <!-- Hint color -->
 
-<!--        <item name="android:fontFamily">@font/montserrat_regular</item>-->
-<!--        <item name="fontFamily">@font/montserrat_regular</item>-->
+        <!--        <item name="android:fontFamily">@font/montserrat_regular</item>-->
+        <!--        <item name="fontFamily">@font/montserrat_regular</item>-->
         <!--        <item name="android:windowBackground">@android:color/transparent</item>-->
 
         <!-- Customize Action Bar text -->
@@ -15,6 +20,22 @@
 
         <!-- Remove elevation if you want a flat look -->
         <item name="actionBarStyle">@style/FlatActionBar</item>
+    </style>
+
+    <style name="CustomTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="colorPrimary">#2C2C2E</item>
+        <item name="boxBackgroundColor">#B0B0B0</item>
+        <item name="boxStrokeColor">#000000</item> <!-- focused stroke -->
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintTextColor">#666666</item>
+        <item name="android:textColorHint">#666666</item>
+    </style>
+
+
+    <style name="Rounded" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
     </style>
 
     <style name="FlatActionBar" parent="Widget.AppCompat.ActionBar">

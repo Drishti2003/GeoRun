@@ -1,73 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="#1e1e1e"-->
-<!--        android:padding="20dp">-->
+    android:background="@drawable/bottom_sheet_background">
 
     <LinearLayout
         android:id="@+id/formCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
         android:orientation="vertical"
         android:padding="20dp"
-        android:elevation="4dp"
-        app:layout_constraintWidth_percent="0.85"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.85">
 
         <ImageView
             android:id="@+id/btnClose"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_gravity="end"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_close"
-            android:contentDescription="Close"/>
+            android:contentDescription="Close"
+            android:src="@drawable/ic_close" />
 
+        <!-- Type Row -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
-                android:fontFamily="@font/montserrat_semibold"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:padding="5dp"
                 android:text="Type"
                 android:textColor="#fff"
-                android:textStyle="bold"
                 android:textSize="18sp"
-                android:layout_margin="10dp"
-                android:padding="5dp"/>
+                android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/workout_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="#b0b0b0"
-            android:fontFamily="@font/montserrat_semibold"
-            android:padding="5dp"
-            android:textColor="#000"
-            android:textSize="18sp" />
+            <Spinner
+                android:id="@+id/workout_spinner"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/spinner_background"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:dropDownVerticalOffset="4dp" />
         </LinearLayout>
+
+        <!-- Duration Row -->
+        <!-- Duration Row -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -78,98 +79,199 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:layout_weight="1"
-                android:hint="min"
-                android:background="#B0B0B0"
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:ems="4"
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="55dp"
                 android:layout_margin="10dp"
-                android:padding="5dp"
-                android:id="@+id/duration"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:layout_weight="1"
-                android:text="Distance"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp"
-                android:padding="5dp"/>
+                android:layout_weight="1">
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:background="#B0B0B0"
-                android:ems="4"
-                android:hint="km"
-                android:padding="5dp"
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:id="@+id/distance"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:layout_weight="1"
-                android:text="Cadence"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:layout_weight="1"
-                android:hint="step/min"
-                android:background="#B0B0B0"
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:ems="4"
-                android:layout_margin="10dp"
-                android:padding="5dp"
-                android:id="@+id/cadence"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/duration_layout"
+                    style="@style/CustomTextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/CustomTextInputStyle"
+                    app:boxBackgroundMode="filled"
+                    app:hintEnabled="false"
+                    app:shapeAppearanceOverlay="@style/Rounded">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/duration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@null"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:hint="min"
+                        android:inputType="number"
+                        android:paddingEnd="40dp"
+                        android:textColor="#000"
+                        android:textCursorDrawable="@drawable/cursor_black"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/duration_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:paddingEnd="8dp"
+                    android:text="min"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </FrameLayout>
         </LinearLayout>
 
+
+        <!-- Distance Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:padding="5dp"
+                android:text="Distance"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/distance_layout"
+                    style="@style/CustomTextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/CustomTextInputStyle"
+                    app:boxBackgroundMode="filled"
+                    app:hintEnabled="false"
+                    app:shapeAppearanceOverlay="@style/Rounded">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/distance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@null"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:hint="Km"
+                        android:inputType="number"
+                        android:paddingEnd="40dp"
+                        android:textColor="#000"
+                        android:textCursorDrawable="@drawable/cursor_black"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/distance_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:paddingEnd="8dp"
+                    android:text="km"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- Cadence Row -->
+        <!-- Cadence Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:padding="5dp"
+                android:text="Cadence"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cadence_layout"
+                    style="@style/CustomTextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/CustomTextInputStyle"
+                    app:boxBackgroundMode="filled"
+                    app:hintEnabled="false"
+                    app:shapeAppearanceOverlay="@style/Rounded">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/cadence"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@null"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:hint="step/min"
+                        android:inputType="number"
+                        android:paddingEnd="40dp"
+                        android:textColor="#000"
+                        android:textCursorDrawable="@drawable/cursor_black"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/cadence_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:paddingEnd="8dp"
+                    android:text="step/min"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </LinearLayout>
+
+
+        <!-- Done Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Done"
-                android:background="@drawable/rounded_background"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:padding="5dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="22dp"
-                android:id="@+id/btnDone"/>
+                android:background="@drawable/rounded_background"
+                android:fontFamily="@font/montserrat_semibold"
+                android:padding="5dp"
+                android:text="Done"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>
